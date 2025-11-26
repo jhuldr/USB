@@ -10,13 +10,14 @@
   <img src="./assets/showcase.png" alt="drawing", width="850"/>
 </p>
 
-
 ## Downloads
+
 Please download USB's weights ('./checkpoints/usb_lesion.pth', './assets/checkpoints/usb_brain.pth') and testing images ('./test_samples') in this [Google Drive folder](https://drive.google.com/drive/folders/1tv-lCrPOzmyMmQkeuKHsIhfsxOAqUqFm?usp=drive_link), then move them into the './assets' folder in this repository. We also provided original images for generating these paired testing samples in './data'.
 
-
 ## Environment
+
 Training and evaluation environment: Python 3.11.4, PyTorch 2.0.1, CUDA 12.2. Run the following command to install required packages.
+
 ```
 conda create -n USB python=3.11
 conda activate USB
@@ -42,7 +43,9 @@ Generation and Editing
 ```
 cd /path/to/usb
 ```
+
 Unconditional generation:
+
 ```
 python scripts/demo_test.py \
     --mode uncond_gen \
@@ -50,20 +53,23 @@ python scripts/demo_test.py \
 ```
 
 Conditional generation:
-```   
+
+```
 python scripts/demo_test.py \
     --mode cond_gen \
     --config_path cfgs/trainer/test/demo_test.yaml
 ```
 
 Pathology-to-healthy editing:
-```  
+
+```
 python scripts/demo_test.py \
     --mode p2h_edit \
     --config_path cfgs/trainer/test/demo_test.yaml
 ```
 
 Healthy-to-pathology editing:
+
 ```
 python scripts/demo_test.py \
     --mode h2p_edit \
@@ -77,6 +83,7 @@ cd /path/to/usb
 ```
 
 First compute the new affine matrices for raw MRI volumes. Take HCP dataset as example:
+
 ```
 python scripts/mni_mapping.py \
     --input_path assets/data/hcp/T1 \
@@ -86,6 +93,7 @@ python scripts/mni_mapping.py \
 ```
 
 Then create the dataset for paired lesion-pathology data:
+
 ```
 python scripts/demo_create_dataset.py \
     --data_config_path cfgs/dataset/test/create_train.yaml \
@@ -99,6 +107,7 @@ cd /path/to/usb
 ```
 
 First train $USB_{lesion}$:
+
 ```
 python scripts/train.py \
     --mode lesion \
@@ -107,6 +116,7 @@ python scripts/train.py \
 ```
 
 Then use the pretrained $USB_{lesion}$ to train $USB_{brain}$:
+
 ```
 python scripts/train.py \
     --mode brain \
@@ -116,7 +126,8 @@ python scripts/train.py \
 
 ```
 
-## Testing 
+## Testing
+
 ```
 cd /path/to/usb
 python scripts/test.py
@@ -125,24 +136,18 @@ python scripts/test.py
 ## Download the Public Datasets
 
 - ADHD200 dataset: Request data from [official website](https://fcon_1000.projects.nitrc.org/indi/adhd200/).
-
 - HCP dataset: Request data from [official website](https://www.humanconnectome.org/study/hcp-young-adult/data-releases).
-
 - OASIS3 dataset Request data from [official website](https://www.oasis-brains.org/#data).
-
-- ATLAS dataset: Request data from [official website](https://fcon_1000.projects.nitrc.org/indi/retro/atlas.html). 
-
+- ATLAS dataset: Request data from [official website](https://fcon_1000.projects.nitrc.org/indi/retro/atlas.html).
 - ISLES2022 dataset: Request data from [official website](https://www.isles-challenge.org/).
-
 - ADNI datasets: Request data from [official website](https://adni.loni.usc.edu/data-samples/access-data/).
-
-- Segmentation labels for data simulation: To train USB model of your own from scratch, one needs the segmentation labels for synthetic image simulation. We obtained the brain anatomy labels via three steps:
-     (1) Skull-strip: [SynthStrip toolbox](https://surfer.nmr.mgh.harvard.edu/docs/synthstrip/); 
-     (2) Synthesize T1w: [SynthSR toolbox](https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSR); 
-     (3) Obtain anatomy segmentation labels: [SynthSeg toolbox](https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSeg).
-
+- For each image, we obtained the anatomy segmentation labels via three steps:
+  (1) Skull-strip: [SynthStrip toolbox](https://surfer.nmr.mgh.harvard.edu/docs/synthstrip/).
+  (2) Synthesize T1w: [SynthSR toolbox](https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSR). This step can be skipped for healthy images.
+  (3) Obtain anatomy segmentation labels: [SynthSeg toolbox](https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSeg).
 
 ## Dataset Structure
+
 Data structure of the raw inputs used to generate paired lesion–pathology samples:
 
 ```
@@ -162,6 +167,7 @@ Data structure of the raw inputs used to generate paired lesion–pathology samp
 ```
 
 Data structure for training and testing:
+
 ```
 /path/to/dataset/
   training_samples/
@@ -182,7 +188,6 @@ Data structure for training and testing:
   test_pathology.txt
 ```
 
-
 ## Citation
-TODO
 
+TODO

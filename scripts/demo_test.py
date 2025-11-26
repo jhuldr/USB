@@ -9,7 +9,7 @@ if __name__ == "__main__":
     parser.add_argument("--mode", type=str, default="uncond_gen",
                         help="Mode of operation: uncond_gen, cond_gen, p2h_edit, h2p_edit.")
 
-    parser.add_argument("--config_path", type=str, default="cfgs/trainor/test/demo_test.yaml")
+    parser.add_argument("--config_path", type=str, default="cfgs/trainer/test/demo_test.yaml")
 
     args = parser.parse_args()
 
