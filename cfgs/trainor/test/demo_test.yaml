@@ -1,0 +1,95 @@
+data:
+  dataset: 'usb'
+  healthy: False
+  healthy_proportion: 0.
+  size: [160, 160, 160]
+
+
+model:
+  in_channels: 3 
+  out_channels: 3
+  num_channels: [128, 256, 256]
+  attention_levels: [False, False, True]
+
+  num_res_blocks: 1
+  num_head_channels: 256
+  learn_sigma: False
+
+  initial_resolution: [20, 20, 20] # resolution after vae
+
+  vae_path: 'assets/checkpoints/vae.ckpt'
+  vae_config_path: 'cfgs/trainor/vae/vae.yaml'
+
+  x_model_path: 'assets/checkpoints/x_model.pth'
+  y_model_path: 'assets/checkpoints/y_model.pth'
+  
+diffusion:
+  beta_schedule: 'linear'  # option:'quad','linear','const','jsd','sigmoid'
+  beta_start: 1e-4
+  beta_end: 2e-2
+  num_diffusion_timesteps: 1024
+
+uncond_gen:
+  x: 'pathol_mask'
+  y: 'img_w_pathol'
+
+  x_model: True
+  y_model: True
+
+  result_dir: 'assets/uncond_gen'
+
+  skip_type: 'uniform' # options: 'uniform', 'quad'
+  num_sample_timesteps: 300
+  eta: 0.0
+  img_num: 16
+  batch_size: 1
+
+cond_gen:
+  x: 'pathol_mask'
+  x_data_path: 'assets/test_mask.txt'
+
+  x_model: False
+  y_model: True
+
+  result_dir: 'assets/cond_gen'
+
+  skip_type: 'uniform' # options: 'uniform', 'quad'
+  num_sample_timesteps: 300
+  eta: 0.0
+  img_num: 16
+  batch_size: 1 
+
+p2h_edit:
+  y: 'img_w_pathol'
+  y_data_path: 'assets/test_pathology.txt'
+
+  x_model: False
+  y_model: True
+
+  result_dir: 'assets/p2h_edit'
+
+  skip_type: 'uniform' # options: 'uniform', 'quad'
+  num_sample_timesteps: 1024
+  eta: 0.0
+  img_num: 16
+  batch_size: 1 
+  num_workers: 10
+
+h2p_edit:
+  x: 'pathol_mask'
+  y: 'img_wo_pathol'
+  x_data_path: 'assets/test_mask.txt'
+  y_data_path: 'assets/test_healthy.txt'
+
+  x_model: False
+  y_model: True
+
+  result_dir: 'assets/h2p_edit'
+
+  skip_type: 'uniform' # options: 'uniform', 'quad'
+  num_sample_timesteps: 1024
+  eta: 0.0
+  img_num: 16
+  batch_size: 1 
+  num_workers: 10
+

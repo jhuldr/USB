@@ -1,0 +1,27 @@
+[tool.poetry]
+name="autoencoders"
+version="1.0.0"
+packages = [{include = "autoencoders"}]
+description = "A package of autoencoders"
+authors = ["Anon"]
+
+[tool.setuptools.package-data]
+"" = ["*.yaml"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+pytest = "^5.4.1"
+torch = "2.4.*"
+torchvision = "*"
+pytorch-lightning = "*"
+scipy = "*"
+pandas = "*"
+hydra-core = "*"
+schema = "*"
+numpy = "*"
+matplotlib = "*"
+ordereddict = "*"
+
+[build-system]
+requires = ["poetry-core", "setuptools ~= 58.0"]
+build-backend = "poetry.core.masonry.api"

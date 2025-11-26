@@ -1,0 +1,94 @@
+# @package _global_
+#based on: https://github.com/Warvito/generative_brain/blob/main/configs/stage1/aekl_v0.yaml 
+model:
+  learning_rate: 0.00005
+  disc_learning_rate: 0.00005
+  beta: 0.00000001
+  perceptual_weight: 0.002 
+  disc_weight: 0.001
+  spatial_dims: 3
+  in_channels: 1
+  out_channels: 1
+  num_channels: [64, 128, 128, 128]
+  latent_channels: 3
+  num_res_blocks: 2
+  norm_num_groups: 32
+  attention_levels: [false, false, false, false]
+  with_nonlocal_attn: false
+  conv: 
+    _target_: torch.nn.Conv3d
+  ckpt_path: 
+  
+
+generator:
+
+  size: [160, 160, 160] 
+
+  photo_prob: 0.2
+  max_rotation: 15
+  max_shear: 0.2
+  max_scaling: 0.2
+  nonlin_scale_min: 0.03
+  nonlin_scale_max: 0.06
+  nonlin_std_max: 4
+  bag_prob: 0.5
+  bag_scale_min: 0.02
+  bag_scale_max: 0.08
+  bf_scale_min: 0.02
+  bf_scale_max: 0.04
+  bf_std_min: 0.1
+  bf_std_max: 0.6
+  gamma_std: 0.1
+  noise_std_min: 0.05
+  noise_std_max: 1.
+  exvixo_prob: 0.25
+  exvixo_prob_vs_photo: 0.66666666666666
+
+  pv: True
+  random_shift: False
+  deform_one_hots: False
+  integrate_deformation_fields: False
+  produce_surfaces: False
+  bspline_zooming: False  
+  n_steps_svf_integration: 8
+  nonlinear_transform: True
+
+  ct_prob: 0
+  flip_prob: 0
+
+  pathology_prob: 1 
+  random_shape_prob: 0.
+
+ 
+
+encoder:
+  default: 
+    _target_: autoencoders.autoencoder_functions_3d.cnn.VariationalEncoder
+    enc_dist:
+      _target_: autoencoders.autoencoders.base.distributions.Normal
+    in_channels: ${model.in_channels}
+    out_channels: ${model.latent_channels}
+    num_channels: ${model.num_channels}
+    latent_channels: ${model.latent_channels}
+    num_res_blocks: ${model.num_res_blocks}
+    norm_num_groups: ${model.norm_num_groups}
+    attention_levels: ${model.attention_levels}
+    with_nonlocal_attn: ${model.with_nonlocal_attn}
+
+decoder:
+  default: 
+    _target_: autoencoders.autoencoder_functions_3d.cnn.Decoder
+    in_channels: ${model.latent_channels}
+    out_channels: ${model.out_channels}
+    num_channels: ${model.num_channels}
+    latent_channels: ${model.latent_channels}
+    num_res_blocks: ${model.num_res_blocks}
+    norm_num_groups: ${model.norm_num_groups}
+    attention_levels: ${model.attention_levels}
+    with_nonlocal_attn: ${model.with_nonlocal_attn}
+    dec_dist:
+      _target_: autoencoders.autoencoders.base.distributions.Default
+
+n_discriminator: 
+  disc_in_channels: 1
+  disc_num_layers: 3
