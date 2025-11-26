@@ -118,7 +118,7 @@ python scripts/train.py \
 
 ## Testing 
 ```
-cd /path/to/una
+cd /path/to/usb
 python scripts/test.py
 ```
 
@@ -136,7 +136,7 @@ python scripts/test.py
 
 - ADNI datasets: Request data from [official website](https://adni.loni.usc.edu/data-samples/access-data/).
 
-- Segmentation labels for data simulation: To train UNA model of your own from scratch, one needs the segmentation labels for synthetic image simulation. We obtained the brain anatomy labels via three steps:
+- Segmentation labels for data simulation: To train USB model of your own from scratch, one needs the segmentation labels for synthetic image simulation. We obtained the brain anatomy labels via three steps:
      (1) Skull-strip: [SynthStrip toolbox](https://surfer.nmr.mgh.harvard.edu/docs/synthstrip/); 
      (2) Synthesize T1w: [SynthSR toolbox](https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSR); 
      (3) Obtain anatomy segmentation labels: [SynthSeg toolbox](https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSeg).
