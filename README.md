@@ -12,7 +12,7 @@
 
 
 ## Downloads
-Please download USB's weights ('./checkpoints/usb_lesion.pth', './assets/checkpoints/usb_brain.pth') and testing images ('./test_samples') in this [TODO], then move them into the './assets' folder in this repository. We also provided original images for generating these paired testing samples in './data'.
+Please download USB's weights ('./checkpoints/usb_lesion.pth', './assets/checkpoints/usb_brain.pth') and testing images ('./test_samples') in this [Google Drive folder](https://drive.google.com/drive/folders/1tv-lCrPOzmyMmQkeuKHsIhfsxOAqUqFm?usp=drive_link), then move them into the './assets' folder in this repository. We also provided original images for generating these paired testing samples in './data'.
 
 
 ## Environment
@@ -37,7 +37,7 @@ python scripts/demo_create_dataset.py \
     --save_path assets
 ```
 
-### Generation and Editing
+Generation and Editing
 
 ```
 cd /path/to/usb
