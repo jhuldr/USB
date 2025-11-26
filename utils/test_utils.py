@@ -13,7 +13,7 @@ from tqdm import tqdm
 from skimage import morphology
 from skimage.transform import resize
 
-from Trainor.models import LDM_3D
+from Trainer.models import LDM_3D
 from datasets import USBData
 from utils.get_betas import get_betas
 from utils.denoise import (

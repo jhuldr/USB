@@ -1,0 +1,57 @@
+data:
+  dataset: 'usb'
+  healthy: False
+  healthy_proportion: 0.
+  size: [160, 160, 160]
+
+model:
+  in_channels: 3 
+  out_channels: 3
+  num_channels: [128, 256, 256]
+  attention_levels: [False, False, True]
+
+  num_res_blocks: 1
+  num_head_channels: 256
+  learn_sigma: False
+
+  initial_resolution: [20, 20, 20] # resolution after vae
+
+  vae_path: 'assets/checkpoints/vae.ckpt'
+  vae_config_path: 'cfgs/trainer/vae/vae.yaml'
+
+diffusion:
+  beta_schedule: 'linear'  # option:'quad','linear','const','jsd','sigmoid'
+  beta_start: 1e-4
+  beta_end: 2e-2
+  num_diffusion_timesteps: 1024
+
+
+optim:
+  weight_decay: 0.000
+  optimizer: 'Adam'  # option:'Adam','RMSProp','SGD'
+  lr: 0.0001
+  beta1: 0.9
+  amsgrad: False
+  eps: 0.00000001
+
+lr_scheduler:
+  type: 'ReduceLROnPlateau'
+  factor: 0.25
+  patience: 4
+
+train:
+  x: 'pathol_mask'
+  y: 'img_w_pathol'
+
+  loss_weight_flag: True
+  batch_size: 8
+  num_workers: 10
+  n_epochs: 200
+  save_freq: 8
+
+  visualize: False
+
+
+  
+
+
