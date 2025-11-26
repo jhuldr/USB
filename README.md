@@ -1,9 +1,13 @@
 ## <p align="center">USB: Unified Synthetic Brain Framework for Bidirectional Pathology–Healthy Generation and Editing</p>
 
-**<p align="center">Jun Wang<sup>1</sup>, Peirong Liu<sup>1</sup></p>**
+<p align="center">
+<b align="center">Jun Wang</b> and <b align="center">Peirong Liu</b>
+</p>
 
 <p align="center">
-<sup>1</sup>Johns Hopkins University
+Department of Electrical and Computer Engineering,<br/>
+Data Science and AI Institute,<br/>
+Johns Hopkins University
 </p>
 
 <p align="center">
@@ -135,16 +139,16 @@ python scripts/test.py
 
 ## Download the Public Datasets
 
+- ADNI datasets: Request data from [official website](https://adni.loni.usc.edu/data-samples/access-data/).
 - ADHD200 dataset: Request data from [official website](https://fcon_1000.projects.nitrc.org/indi/adhd200/).
 - HCP dataset: Request data from [official website](https://www.humanconnectome.org/study/hcp-young-adult/data-releases).
 - OASIS3 dataset Request data from [official website](https://www.oasis-brains.org/#data).
 - ATLAS dataset: Request data from [official website](https://fcon_1000.projects.nitrc.org/indi/retro/atlas.html).
 - ISLES2022 dataset: Request data from [official website](https://www.isles-challenge.org/).
-- ADNI datasets: Request data from [official website](https://adni.loni.usc.edu/data-samples/access-data/).
-- For each image, we obtained the anatomy segmentation labels via three steps:
-  (1) Skull-strip: [SynthStrip toolbox](https://surfer.nmr.mgh.harvard.edu/docs/synthstrip/).
-  (2) Synthesize T1w: [SynthSR toolbox](https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSR). This step can be skipped for healthy images.
-  (3) Obtain anatomy segmentation labels: [SynthSeg toolbox](https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSeg).
+- For each image, we obtain the anatomy segmentation labels through the steps below:
+  - Synthesize T1w (This step can be skipped for healthy images.): [SynthSR toolbox](https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSR).
+  - Skull-strip: [SynthStrip toolbox](https://surfer.nmr.mgh.harvard.edu/docs/synthstrip/).
+  - Obtain anatomy segmentation labels: [SynthSeg toolbox](https://surfer.nmr.mgh.harvard.edu/fswiki/SynthSeg).
 
 ## Dataset Structure
 
