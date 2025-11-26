@@ -1,4 +1,4 @@
-## <p align="center">[Unified Synthetic Brain]</p>
+## <p align="center">USB: Unified Synthetic Brain Framework for Bidirectional Pathology–Healthy Generation and Editing</p>
 
 **<p align="center">Jun Wang<sup>1</sup>, Peirong Liu<sup>1</sup></p>**
 
@@ -53,26 +53,30 @@ python scripts/demo_create_dataset.py \
 cd /path/to/usb
 
 # unconditional generation
+
 python scripts/demo_test.py \
     --mode uncond_gen \
     --config_path cfgs/trainor/test/demo_test.yaml
 
-# conditional generation    
+# conditional generation   
+
 python scripts/demo_test.py \
     --mode cond_gen \
     --config_path cfgs/trainor/test/demo_test.yaml
 
 # pathology-to-healthy editing  
+
 python scripts/demo_test.py \
     --mode p2h_edit \
     --config_path cfgs/trainor/test/demo_test.yaml
 
-# healthy-to-pathology editing  
+# healthy-to-pathology editing
+
 python scripts/demo_test.py \
     --mode h2p_edit \
     --config_path cfgs/trainor/test/demo_test.yaml
 ```
 
-## Training on Synthetic Data and/or Real Data
+## Training on Synthetic Data
 
 TODO
