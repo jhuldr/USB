@@ -1,4 +1,4 @@
-## <p align="center">USB: Unified Synthetic Brain Framework for Bidirectional Pathology–Healthy Generation and Editing</p>
+## <p align="center">[USB: Unified Synthetic Brain Framework for Bidirectional Pathology–Healthy Generation and Editing](https://arxiv.org/abs/2512.00269)</p>
 
 <p align="center">
 <b align="center">Jun Wang</b> and <b align="center">Peirong Liu</b>
