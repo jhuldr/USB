@@ -193,5 +193,10 @@ Data structure for training and testing:
 ```
 
 ## Citation
-
-TODO
+```bibtex
+@article{wang2025usb,
+  title={{USB: Unified Synthetic Brain Framework for Bidirectional Pathology–Healthy Generation and Editing}},
+  author={Wang, Jun and Liu, Peirong},
+  journal={arXiv preprint arXiv:2512.00269},
+  year={2025}
+}
